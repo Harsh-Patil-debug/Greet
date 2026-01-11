@@ -256,7 +256,7 @@ section.active{display:block;animation:fadeIn 1s}
 
 <body>
 
-<audio id="background-music" src="audios/Dekha_hi_nahi.mp3" autoplay loop></audio>    
+<audio id="background-music" src="audios/Dekha_hi_nahi.mp3"></audio>    
 
 <div id="errorScreen"></div>
 
@@ -366,7 +366,10 @@ setTimeout(()=>{
     apologyMessage.style.display="block";
 },9000);
 
-function showSurprise(){apologyMessage.style.display="none";surpriseSlide.style.display="block";}
+function showSurprise(){apologyMessage.style.display="none";surpriseSlide.style.display="block";
+                        const music = document.getElementById("background-music");
+                        music.play().catch(e => console.log(e));    
+    }
 function showFinal(){surpriseSlide.style.display="none";finalPopup.style.display="block";}
 function startSite(){finalPopup.style.display="none";page=1;show(1);startTyping();startPage2Typing();startPage3Typing();}
 
