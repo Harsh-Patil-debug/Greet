@@ -270,11 +270,11 @@ section.active{display:block;animation:fadeIn 1s}
 <div id="surpriseSlide">
     <h1>Are you ready for the surprise? 😍</h1><br>
     <button class="yesBtn" onclick="showFinal()">Yes!!</button>
-    <button class="yesBtn" onclick="showFinal()">Yes yes cutuu 💖</button>
+    <button class="yesBtn" onclick="showFinal()">Yes yes Anuuu 💖</button>
 </div>
 
 <div id="finalPopup">
-    Happiest six months together, my bbg 💖<br><br>
+     See How Beautiful U Areeee My Anuuu💖<br><br>
     Really blessed to have you in my life ✨<br><br>
     <button class="btn" onclick="startSite()">YES 💕</button>
 </div>
@@ -282,7 +282,7 @@ section.active{display:block;animation:fadeIn 1s}
 <!-- PAGE 1 -->
 <section id="page1">
     <div id="page1Scroll">
-        <h1>Happy 6 Months 💕</h1>
+        <h1>Avani Is So Beautiful 💕</h1>
         <p id="page1Text"></p>
     </div>
     <div id="page1Buttons">
@@ -297,14 +297,14 @@ section.active{display:block;animation:fadeIn 1s}
     <canvas id="page2Hearts"></canvas>
     <div id="page2Scroll">
         <div id="page2IntroText">
-            You are my sweet, my sheera, and my bbg.<br>
+            You are my sweet,my beautiful bbg.<br>
             You are the happiness of my heart, and every single one of your smiles fills my life completely.<br>
             Whenever you laugh, all my worries disappear.<br>
             You are the reality of my dreams, and the brightest star of my life.<br>
             You make every day special and always keep my heart happy.<br>
             There’s no one as beautiful as you, and I will always love you.<br>
             My world is incomplete without you, and every little thing about you is priceless to me.<br>
-            You are the blessings of my life, my sugarplump 💕✨
+            You are the blessings of my life, my Anu 💕✨
         </div>
         <div id="page2Text"></div>
         <button id="loveReasonBtn" onclick="revealReason()">Click to reveal a reason I love you 💖</button>
@@ -329,15 +329,14 @@ section.active{display:block;animation:fadeIn 1s}
 <script>
 
 const memoryImages = [
-    "images/1.jpeg",
-    "images/2.jpeg",
-    "images/3.jpeg",
-    "images/6.jpeg",
-    "images/5.jpeg"
+    "images/1_2.jpeg",
+    "images/1_1.jpeg",
+    "images/1_3.jpeg",
+    "images/1_4.jpeg",
 ];
 
 
-const videoSrc = "video/V1.mp4"
+const videoSrc = "video/V2.mp4"
 
 let page=1;
 const apologyMessage=document.getElementById("apologyMessage");
@@ -371,7 +370,7 @@ function showSurprise(){apologyMessage.style.display="none";surpriseSlide.style.
                         music.play().catch(e => console.log(e));    
     }
 function showFinal(){surpriseSlide.style.display="none";finalPopup.style.display="block";}
-function startSite(){finalPopup.style.display="none";page=1;show(1);startTyping();startPage2Typing();startPage3Typing();}
+function startSite(){finalPopup.style.display="none";page=1;show(1);startTyping();startPage2Typing();}
 
 /* Navigation */
 function show(n){
@@ -382,13 +381,14 @@ function next(){if(page<=3){page++;show(page); if(page===3){startPage3Typing();}
 function prev(){if(page>1){page--;show(page)}}
 
 /* PAGE 1 LETTER-BY-LETTER TEXT */
-const text=`Six months with you feels like a beautiful dream I never want to wake up from. From the very first day you came into my life, everything slowly started making more sense, like my world finally found its missing piece. In these six months, you’ve become my comfort on bad days, my happiness on good ones, and my reason to smile even on the most ordinary days. Every laugh we share, every little argument we fix together, every late-night talk, and every quiet moment has only made me fall deeper in love with you. You have this magical way of making my heart feel safe, full, and understood all at once. Loving you isn’t something I try to do—it comes so naturally, like breathing. You make me feel seen, valued, and cared for in ways I never knew I needed. With you, even the simplest moments turn special, and even the hardest days feel lighter because I know you’re by my side. These six months are not just time passed; they’re memories written into my heart forever. And if six months can feel this beautiful, I can’t even imagine how amazing forever with you will be. Thank you for being you, for loving me the way you do, and for choosing me every single day. I’m so incredibly blessed to have you in my life, and I promise to keep loving you more with every tomorrow. Happiest six months together, my love—this is just the beginning of our forever 💕✨`;
+const text=`Avani’s beauty feels like poetry brought to life—soft, timeless, and deeply enchanting. There is a natural grace in her presence that makes everything around her feel calmer and more alive at the same time. Her smile carries a quiet magic, gentle yet powerful enough to brighten even the dullest moments, while her eyes hold a rare depth, as if they reflect not just the world around her but the kindness and warmth within her soul. Avani’s beauty is a graceful blend of softness and strength, unfolding like a serene melody that stays with you long after it is heard. There is an effortless charm in the way she carries herself, as though elegance flows naturally through every movement.
+Every expression of hers feels sincere, effortlessly elegant, and full of meaning. What makes Avani truly unforgettable is that her beauty is not just seen, but felt—it lingers in the heart, leaving a sense of comfort, admiration, and wonder long after she is gone. 💕✨`;
 let i=0;
 function startTyping(){page1Text.innerHTML="";i=0;typeLetter();}
 function typeLetter(){if(i<text.length){page1Text.innerHTML+=text[i]==="\n"? "<br><br>":text[i];i++;setTimeout(typeLetter,35);}}
 
 /* PAGE 2 MINI LOVE NOTE */
-const page2Message="Tu mari duniya ni sabse godh ane cute chhe, mari little sweett bbg. Tu mara dil ni khushi chhe, ane tamari ek ek smile mari zindagi ne full banaave chhe. Hu hamesha tamne prem karish; tamara bina mari duniya adhoori chhe. Jevu sundar koi nathi, tu mari life nu treasure chhe, mari sugarplump 💕✨";
+const page2Message="अवनीचं सौंदर्य शब्दांत मावेनासं,चंद्रही लाजेल तिच्या तेजापुढं खासं.डोळ्यांत तिच्यावप्नांची साजरी दुनिया,हसण्यातच तिच्या हरवते माझं मन पुन्हा.";
 let j=0;
 function startPage2Typing(){
     page2Text.innerHTML="";
@@ -446,22 +446,8 @@ The first time I held her hand, I was totally lost in her beauty. It felt like t
 
 The first time I saw her in a bindi, she looked unbelievably beautiful. I couldn’t understand how someone could look so perfect. I crave her the most. I have never craved someone like this before. If anyone ever asks me who she is to me, I would happily say she is my home. I feel safe with her.
 
-I got attached to her so quickly. The first time we hugged, the height difference made it even more special. I swear to God, I love her so much—I don’t have words to describe how good and perfect it feels. Our first date was on 27th October, with a little twist—we ordered pizza online and enjoyed it so much. On 31st October, we met again at VRR Patil, after a long time. I don’t know why, but every meeting feels better than the last. It always brings us closer.
-
-She gifted me a bracelet and a chain—the prettiest things I could ever have. They are so pyaara , and she herself is even more pyara . I can’t describe how cute she is. Once again, I don’t know what I did to deserve her, but I know this—I am truly blessed.
-This time, I’m never going to give up on you. I will love you the way you are, even when you can’t love yourself. I don’t want you to act mature all the time—I want you to be real. I want to see that little kid inside you always. I will keep you the happiest I possibly can. I know I don’t always look perfect, and sometimes I get scared that you might leave, but I’m loving you more than I ever thought I could. I’m trying my best every single day just to keep you happy. I don’t want to be with anyone else but you, because the way you understand me—no one ever could.
-
-People might say this doesn’t feel real, that it’s just timepass, and ask who will truly stay and who will leave. But I believe this chance we have can turn into something real. I want to try more than anything. I love you deeply, more than you know, and I remember every little thing you do. Every small habit, every tiny moment—you are always on my mind, my bbg.
-
-Our first date was on 6th November, and it felt so special. Even though it was short and we couldn’t go far, like Mumbai, because of time limits, we still enjoyed it so much—more than we ever expected. Every moment with you feels precious.
-
-I remember reaching the Gateway and clicking pictures together for the first time. We spent time at Marine Drive, sitting there, talking, laughing, and the way your hair, eyes, and smile looked—it made me lose myself completely. I kept thinking how someone could be so perfect. You looked so cute and beautiful that day. I showed you my diary, and when you read it, you didn’t fully understand everything, yet you still loved it. Watching your reaction was so adorable that I secretly recorded that moment—it was too precious to lose.
-
-Time passed so quickly that day. Before we knew it, it was time to leave. Those five hours felt like five minutes with you. On the train, we were both sleepy, completely tired, but happy. When we hugged before leaving and went back home, I knew I would never forget that day. No matter how much someone tries to make me forget you, my heart will always choose you.
-
-I remember you practicing, watching you play, and cheering for you every day. On 16th November, I was so proud seeing you lead your team and reach the finals. Even though you didn’t win, the way you played, the way you tried—it made me want to hug you so tight. Seeing your crossed fingers, your prayers, and your hope made everything feel possible. You did so well, and I felt incredibly blessed to have you in my life.
-
-Being with you feels like home. The time we spend together is the best part of my life—when I’m with you, all my problems disappear. I love you so much, my bbg. I promise to love you in a way that you’ll never doubt my love. I’ll keep you forever, protect you forever, and make you the happiest—because you are my home, my peace, and my everything.`;
+I got attached to her so quickly. The first time we hugged, the height difference made it even more special. I swear to God, I love her so much—I don’t have words to describe how good and perfect it feels.I Always think how beautiful we look when we hugged together and stayed there for long.It always brings us closer.
+`;
 
 let k=0;
 function startPage3Typing(){
@@ -475,37 +461,42 @@ function startPage3Typing(){
     let currentParagraph = 0;
 
     function typeLetter3(){
-        if(k<page3Message.length){
-           // Detect paragraph break
-            if(page3Message[k] === "\n" && page3Message[k+1] === "\n"){
-                page3Text.innerHTML += "<br><br>";
+    if(k < page3Message.length){
+        if(page3Message[k] === "\n" && page3Message[k+1] === "\n"){
+            page3Text.innerHTML += "<br><br>";
 
-                // Insert image if available
-                if(memoryImages[imgIndex]){
-                    page3Text.innerHTML += `
-                        <img src="${memoryImages[imgIndex]}" class="memory-img">
-                    `;
-                    imgIndex++;
-                }
-                currentParagraph++;
-                k += 2;
-
-            if (currentParagraph === totalParagraphs) {
+            if(memoryImages[imgIndex]){
                 page3Text.innerHTML += `
-                    <video class="memory-video" controls muted playsinline>
-                    <source src="${videoSrc}" type="video/mp4">
-                    Your browser does not support the video tag.
-                    </video>
+                    <img src="${memoryImages[imgIndex]}" class="memory-img">
                 `;
-                }
-            } else {
-                page3Text.innerHTML += page3Message[k];
-                k++;
+                imgIndex++;
             }
-
-            setTimeout(typeLetter3, 25);
+            k += 2;
+        } else {
+            page3Text.innerHTML += page3Message[k];
+            k++;
         }
+
+        setTimeout(typeLetter3, 25);
+    } 
+    else {
+        // ✅ INSERT VIDEO AT THE VERY END
+        page3Text.innerHTML += `
+            <br><br>
+            <video class="memory-video" controls playsinline style="
+                width:90%;
+                max-width:500px;
+                border-radius:20px;
+                box-shadow:0 10px 25px rgba(255,20,147,.4);
+                margin:20px auto;
+                display:block;
+            ">
+                <source src="${videoSrc}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        `;
     }
+}
 
     typeLetter3();
 }
