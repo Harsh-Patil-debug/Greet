@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy 6 Months 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#ffe6f0;overflow:hidden}
+
+/* Pages */
+section{display:none;min-height:100vh;padding:40px;text-align:center;position:relative}
+section.active{display:block;animation:fadeIn 1s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* Buttons */
+.btn,.yesBtn{
+    padding:14px 30px;
+    font-size:1.2em;
+    font-weight:bold;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(45deg,#ff69b4,#ff1493,#ffb6c1);
+    color:#fff;
+    cursor:pointer;
+    margin:10px;
+    transition:.3s;
+}
+.btn:hover,.yesBtn:hover{
+    transform:scale(1.15);
+    box-shadow:0 10px 25px rgba(255,20,147,.6);
+}
+
+/* ERROR SCREEN */
+#errorScreen{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ffd1dc,#ff9acb);
+    z-index:9999;
+    overflow:hidden;
+}
+.crashError{
+    position:absolute;
+    font-weight:bold;
+    user-select:none;
+    animation:floatUp 3s linear infinite;
+}
+@keyframes floatUp{
+    from{transform:translateY(100vh)}
+    to{transform:translateY(-50px)}
+}
+
+/* Apology popup */
+#apologyMessage{
+    position:fixed;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    background:linear-gradient(135deg,#ffb6c1,#ff69b4,#ff1493);
+    color:#fff;
+    padding:30px 50px;
+    border-radius:25px;
+    text-align:center;
+    font-size:1.4em;
+    font-weight:bold;
+    max-width:85%;
+    z-index:10000;
+    display:none;
+}
+
+/* Surprise Question */
+#surpriseSlide{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ffb6c1,#ffe6f0);
+    text-align:center;
+    padding-top:30vh;
+    display:none;
+    z-index:9000;
+}
+
+/* Final Popup */
+#finalPopup{
+    position:fixed;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    background:#ff69b4;
+    color:#fff;
+    padding:35px 45px;
+    border-radius:30px;
+    font-size:1.4em;
+    font-weight:bold;
+    text-align:center;
+    display:none;
+    z-index:10001;
+}
+
+.memory-img{
+    width: 70%;
+    max-width: 360px;
+    margin: 25px auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(255,20,147,0.35);
+}
+
+/* PAGE 1 SCROLL */
+#page1Scroll{
+    max-height:70vh;
+    overflow-y:auto;
+    padding:10px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #ff69b4 #ffe6f0;
+}
+#page1Scroll::-webkit-scrollbar {
+    width: 10px;
+    background: #ffe6f0;
+    border-radius: 10px;
+}
+#page1Scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff69b4, #ff1493, #ffb6c1);
+    border-radius: 10px;
+}
+#page1Scroll::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #ff1493, #ff69b4, #ffb6c1);
+}
+
+/* PAGE 2 SCROLL */
+#page2Scroll{
+    max-height:65vh;
+    overflow-y:auto;
+    padding:10px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #ff1493 #ffe6f0;
+}
+#page2Scroll::-webkit-scrollbar{
+    width: 10px;
+    background: #ffe6f0;
+    border-radius: 10px;
+}
+#page2Scroll::-webkit-scrollbar-thumb{
+    background: linear-gradient(45deg,#ffb6c1,#ff69b4,#ff1493);
+    border-radius: 10px;
+}
+#page2Scroll::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(45deg,#ff1493,#ff69b4,#ffb6c1);
+}
+
+/* Page3Scroll */
+
+#page3Scroll{
+    max-height:65vh;
+    overflow-y:auto;
+    padding:10px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #ff1493 #ffe6f0;
+}
+#page3Scroll::-webkit-scrollbar{
+    width: 10px;
+    background: #ffe6f0;
+    border-radius: 10px;
+}
+#page3Scroll::-webkit-scrollbar-thumb{
+    background: linear-gradient(45deg,#ffb6c1,#ff69b4,#ff1493);
+    border-radius: 10px;
+}
+#page3Scroll::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(45deg,#ff1493,#ff69b4,#ffb6c1);
+}
+
+/*Page4Scroll*/
+
+
+/* Page 1 text */
+#page1Text{
+    font-size:1.2em;
+    line-height:1.7em;
+    color:#ff1493;
+    max-width:800px;
+    margin:20px auto;
+    font-family:'Comic Sans MS',cursive;
+}
+
+/* Page 1 buttons */
+#page1Buttons{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* Hearts & stars canvas */
+#hearts, #page2Hearts, #page3Hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:999;
+}
+
+/* Page 2 text */
+#page2IntroText{
+    font-size:1.3em;
+    color:#ff1493;
+    font-family:'Comic Sans MS',cursive;
+    max-width:850px;
+    margin:0 auto 20px auto;
+    line-height:1.7em;
+}
+#page2Text{
+    font-size:1.3em;
+    color:#ff1493;
+    font-family:'Comic Sans MS',cursive;
+    max-width:850px;
+    margin:0 auto 20px auto;
+    line-height:1.7em;
+}
+
+/* Page 2 button */
+#loveReasonBtn{
+    padding:12px 25px;
+    font-size:1.1em;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(45deg,#ffb6c1,#ff69b4,#ff1493);
+    color:white;
+    cursor:pointer;
+    margin-top:20px;
+    transition:.3s;
+}
+#loveReasonBtn:hover{transform:scale(1.15);}
+
+#loveReason{
+    font-size:1.2em;
+    margin-top:15px;
+    color:#ff1493;
+    font-family:'Comic Sans MS',cursive;
+}
+
+/* PAGE 3 */
+#page3Text{
+    font-size:1.2em;
+    line-height:1.7em;
+    color:#ff1493;
+    max-width:900px;
+    margin:20px auto;
+    font-family:'Comic Sans MS',cursive;
+    text-align:left;
+    animation:fadeInText 1s ease forwards;
+}
+@keyframes fadeInText{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="background-music" src="Audio/Dekha_hi_nahi.mp3" autoplay loop></audio>    
+
+<div id="errorScreen"></div>
+
+<div id="apologyMessage">
+    Oops! Sorry for your inconvenience, ma’am 😍<br><br>
+    Our system was lost in your beauty and elegant touch 💖<br>
+    It couldn’t handle this much cuteness ✨<br><br>
+    <button class="btn" onclick="showSurprise()">Let’s go further? 💕</button>
+</div>
+
+<div id="surpriseSlide">
+    <h1>Are you ready for the surprise? 😍</h1><br>
+    <button class="yesBtn" onclick="showFinal()">Yes!!</button>
+    <button class="yesBtn" onclick="showFinal()">Yes yes cutuu 💖</button>
+</div>
+
+<div id="finalPopup">
+    Happiest six months together, my bbg 💖<br><br>
+    Really blessed to have you in my life ✨<br><br>
+    <button class="btn" onclick="startSite()">YES 💕</button>
+</div>
+
+<!-- PAGE 1 -->
+<section id="page1">
+    <div id="page1Scroll">
+        <h1>Happy 6 Months 💕</h1>
+        <p id="page1Text"></p>
+    </div>
+    <div id="page1Buttons">
+        <button class="btn" onclick="prev()">⬅️ Back</button>
+        <button class="btn" onclick="next()">Next ➡️</button>
+    </div>
+    <canvas id="hearts"></canvas>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2">
+    <canvas id="page2Hearts"></canvas>
+    <div id="page2Scroll">
+        <div id="page2IntroText">
+            You are my sweet, my sheera, and my bbg.<br>
+            You are the happiness of my heart, and every single one of your smiles fills my life completely.<br>
+            Whenever you laugh, all my worries disappear.<br>
+            You are the reality of my dreams, and the brightest star of my life.<br>
+            You make every day special and always keep my heart happy.<br>
+            There’s no one as beautiful as you, and I will always love you.<br>
+            My world is incomplete without you, and every little thing about you is priceless to me.<br>
+            You are the blessings of my life, my sugarplump 💕✨
+        </div>
+        <div id="page2Text"></div>
+        <button id="loveReasonBtn" onclick="revealReason()">Click to reveal a reason I love you 💖</button>
+        <div id="loveReason"></div>
+    </div>
+    <div id="page2Buttons">
+        <button class="btn" onclick="prev()">⬅️ Back</button>
+        <button class="btn" onclick="next()">Next ➡️</button>
+    </div>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3">
+    <canvas id="page3Hearts"></canvas>
+    <h1>Our Memories 💖</h1>
+    <div id="page3Scroll">
+    <p id="page3Text"></p>
+    </div>
+    <button class="btn" onclick="prev()">⬅️ Back</button>
+</section>
+
+<script>
+
+const memoryImages = [
+    "images/1.jpeg",
+    "images/2.jpeg",
+    "images/3.jpeg",
+    "images/6.jpeg",
+    "images/5.jpeg"
+];
+
+
+const videoSrc = "video/V1.mp4"
+
+let page=1;
+const apologyMessage=document.getElementById("apologyMessage");
+const surpriseSlide=document.getElementById("surpriseSlide");
+const finalPopup=document.getElementById("finalPopup");
+
+/* ERROR CHAOS */
+const screen=document.getElementById("errorScreen");
+const colors=["#ff1493","#ff69b4","#ffb6c1","#fff"];
+const interval=setInterval(()=>{
+    const e=document.createElement("div");
+    e.innerText="ERROR";
+    e.className="crashError";
+    e.style.left=Math.random()*innerWidth+"px";
+    e.style.top=Math.random()*innerHeight+"px";
+    e.style.fontSize=20+Math.random()*40+"px";
+    e.style.color=colors[Math.floor(Math.random()*colors.length)];
+    screen.appendChild(e);
+    setTimeout(()=>e.remove(),3000);
+},40);
+
+/* Show apology after 9 seconds */
+setTimeout(()=>{
+    clearInterval(interval);
+    screen.style.display="none";
+    apologyMessage.style.display="block";
+},9000);
+
+function showSurprise(){apologyMessage.style.display="none";surpriseSlide.style.display="block";}
+function showFinal(){surpriseSlide.style.display="none";finalPopup.style.display="block";}
+function startSite(){finalPopup.style.display="none";page=1;show(1);startTyping();startPage2Typing();startPage3Typing();}
+
+/* Navigation */
+function show(n){
+    for(let i=1;i<=3;i++){document.getElementById("page"+i).classList.remove("active");}
+    document.getElementById("page"+n).classList.add("active");
+}
+function next(){if(page<=3){page++;show(page); if(page===3){startPage3Typing();}}}
+function prev(){if(page>1){page--;show(page)}}
+
+/* PAGE 1 LETTER-BY-LETTER TEXT */
+const text=`Six months with you feels like a beautiful dream I never want to wake up from. From the very first day you came into my life, everything slowly started making more sense, like my world finally found its missing piece. In these six months, you’ve become my comfort on bad days, my happiness on good ones, and my reason to smile even on the most ordinary days. Every laugh we share, every little argument we fix together, every late-night talk, and every quiet moment has only made me fall deeper in love with you. You have this magical way of making my heart feel safe, full, and understood all at once. Loving you isn’t something I try to do—it comes so naturally, like breathing. You make me feel seen, valued, and cared for in ways I never knew I needed. With you, even the simplest moments turn special, and even the hardest days feel lighter because I know you’re by my side. These six months are not just time passed; they’re memories written into my heart forever. And if six months can feel this beautiful, I can’t even imagine how amazing forever with you will be. Thank you for being you, for loving me the way you do, and for choosing me every single day. I’m so incredibly blessed to have you in my life, and I promise to keep loving you more with every tomorrow. Happiest six months together, my love—this is just the beginning of our forever 💕✨`;
+let i=0;
+function startTyping(){page1Text.innerHTML="";i=0;typeLetter();}
+function typeLetter(){if(i<text.length){page1Text.innerHTML+=text[i]==="\n"? "<br><br>":text[i];i++;setTimeout(typeLetter,35);}}
+
+/* PAGE 2 MINI LOVE NOTE */
+const page2Message="Tu mari duniya ni sabse godh ane cute chhe, mari little sweett bbg. Tu mara dil ni khushi chhe, ane tamari ek ek smile mari zindagi ne full banaave chhe. Hu hamesha tamne prem karish; tamara bina mari duniya adhoori chhe. Jevu sundar koi nathi, tu mari life nu treasure chhe, mari sugarplump 💕✨";
+let j=0;
+function startPage2Typing(){
+    page2Text.innerHTML="";
+    j=0;
+    typePage2Letter();
+}
+function typePage2Letter(){
+    if(j<page2Message.length){
+        page2Text.innerHTML+=page2Message[j]==="\n"? "<br><br>":page2Message[j];
+        j++;
+        setTimeout(typePage2Letter,45);
+    }
+}
+
+/* PAGE 2 REASONS */
+const reasons=[
+"Your smile lights up my darkest days.","Your laugh is my favorite sound.","Your eyes are like a universe of love.","You make me feel safe and understood.","Your voice is music to my ears.","You always know how to make me smile.","Your hugs feel like home.","You are my little sweett bbg.","You are my majha godh.","You are my sugarplump.","Your kindness amazes me every day.","You are thoughtful and caring.","You remember little things about me.","You make even boring days fun.","You inspire me to be a better person.","You love me despite your flaws.","Your messages make me blush.","You give the best advice.","You make me feel special always.","You have the softest heart.","You make my heart skip a beat.","You look beautiful in everything you wear.","You are my best friend.","You are my confidant.","You understand me without words.","You are always there for me.","You are playful and fun.","You are my little sheera.","You are sweet in the smallest ways.","Your hair smells amazing.","You are my sunshine.","You motivate me to dream bigger.","You always make me laugh.","You have the cutest expressions.","You are thoughtful about everyone.","You believe in me.","You make me feel loved unconditionally.","You are my calm in chaos.","You are my favorite person.","Your hugs cure everything.","You are always adorable.","You have the sweetest soul.","You are patient with me.","You are affectionate.","You are my heart’s home.","You are my adventure buddy.","You make every moment memorable.","You give the best compliments.","You are my everything.","You are my tiny happiness booster.","You make my heart feel full.","You are smart and witty.","You are my perfect companion.","You are my motivation.","You make challenges easier.","You are unique in every way.","You are my favorite thought.","You are my dream come true.","You are my reason to smile randomly.","You always know the right thing to say.","You are always kind to everyone.","You are my cuteness overload.","You make life magical.","You are my secret joy.","You are my partner in mischief.","You make ordinary things extraordinary.","You are my little miracle.","You are my muse.","You are gentle and loving.","You are my sweetest memory.","You make me feel lucky every day.","You are thoughtful in tiny ways.","You are my favorite hello.","You are my hardest goodbye.","You care deeply about people.","You are my heart’s beat.","You are my happiness addiction.","You are always honest with me.","You make me feel alive.","You are my dream partner.","You are my soft place to fall.","You make me believe in love more.","You are always encouraging.","You make my life colorful.","You are my cuddle buddy.","You are always thoughtful.","You make me feel like a better man.","You are my little queen.","You are my peace.","You make me forget all worries.","You are my inspiration.","You are my favorite notification.","You are my treasure.","You are my majha godh, my sheera, my bbg.","You make my world complete.","You are my forever and always.","You are my heart’s joy.","You are irreplaceable.","You are YOU—and that’s why I love you more than anything 💖✨"
+];
+
+function revealReason(){
+    const rand=reasons[Math.floor(Math.random()*reasons.length)];
+    document.getElementById("loveReason").innerText=rand;
+}
+
+/* HEARTS CANVAS */
+function createHearts(canvasId,num=100){
+    const c=document.getElementById(canvasId);
+    const ctx=c.getContext("2d");
+    c.width=innerWidth;c.height=innerHeight;
+    const hearts=[...Array(num)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:10+Math.random()*10,s:Math.random()*2+2}));
+    function draw(){
+        ctx.clearRect(0,0,c.width,c.height);
+        hearts.forEach(h=>{
+            ctx.fillStyle="#ff69b4";
+            ctx.font=h.r+"px Comic Sans MS";
+            ctx.fillText("❤",h.x,h.y);
+            h.y+=h.s;
+            if(h.y>c.height) h.y=-20;
+            if(h.x>c.width) h.x=Math.random()*c.width;
+        });
+        requestAnimationFrame(draw);
+    }
+    draw();
+}
+createHearts("hearts",200);
+createHearts("page2Hearts",150);
+createHearts("page3Hearts",150);
+
+/* PAGE 3 LETTER-BY-LETTER POPUP */
+const page3Message=`She talks a lot, and I love listening to her. I fell for her the very first time I saw her, without even realizing how deeply I would fall—but here is the truth: I am in love. I had never been with anyone like her before. She is so pretty and cute. We don’t meet every day, but the craving to see her is so strong, like I want her every single second. When we are together, I don’t waste a moment admiring her.
+
+I don’t know why, but I am completely obsessed with her. Sometimes I just think about what I did to deserve someone like her—how I got so lucky. I am truly so happy to have her in my life and feel incredibly blessed. The first time we met was on her birthday, 17th June. We matched by mistake, but that mistake turned into the best thing that ever happened to me. I am so scared to lose her. She means so much to me.
+
+The first time I held her hand, I was totally lost in her beauty. It felt like the most beautiful thing that had ever happened to me. When she talks, the way her eyes speak, the way she laughs, and the way her hair moves with the air—I can’t take my eyes off her. She is so pretty that I can never fully describe her in words. I am so happy with her and prayed to be with her forever.
+
+The first time I saw her in a bindi, she looked unbelievably beautiful. I couldn’t understand how someone could look so perfect. I crave her the most. I have never craved someone like this before. If anyone ever asks me who she is to me, I would happily say she is my home. I feel safe with her.
+
+I got attached to her so quickly. The first time we hugged, the height difference made it even more special. I swear to God, I love her so much—I don’t have words to describe how good and perfect it feels. Our first date was on 27th October, with a little twist—we ordered pizza online and enjoyed it so much. On 31st October, we met again at VRR Patil, after a long time. I don’t know why, but every meeting feels better than the last. It always brings us closer.
+
+She gifted me a bracelet and a chain—the prettiest things I could ever have. They are so pyaara , and she herself is even more pyara . I can’t describe how cute she is. Once again, I don’t know what I did to deserve her, but I know this—I am truly blessed.
+This time, I’m never going to give up on you. I will love you the way you are, even when you can’t love yourself. I don’t want you to act mature all the time—I want you to be real. I want to see that little kid inside you always. I will keep you the happiest I possibly can. I know I don’t always look perfect, and sometimes I get scared that you might leave, but I’m loving you more than I ever thought I could. I’m trying my best every single day just to keep you happy. I don’t want to be with anyone else but you, because the way you understand me—no one ever could.
+
+People might say this doesn’t feel real, that it’s just timepass, and ask who will truly stay and who will leave. But I believe this chance we have can turn into something real. I want to try more than anything. I love you deeply, more than you know, and I remember every little thing you do. Every small habit, every tiny moment—you are always on my mind, my bbg.
+
+Our first date was on 6th November, and it felt so special. Even though it was short and we couldn’t go far, like Mumbai, because of time limits, we still enjoyed it so much—more than we ever expected. Every moment with you feels precious.
+
+I remember reaching the Gateway and clicking pictures together for the first time. We spent time at Marine Drive, sitting there, talking, laughing, and the way your hair, eyes, and smile looked—it made me lose myself completely. I kept thinking how someone could be so perfect. You looked so cute and beautiful that day. I showed you my diary, and when you read it, you didn’t fully understand everything, yet you still loved it. Watching your reaction was so adorable that I secretly recorded that moment—it was too precious to lose.
+
+Time passed so quickly that day. Before we knew it, it was time to leave. Those five hours felt like five minutes with you. On the train, we were both sleepy, completely tired, but happy. When we hugged before leaving and went back home, I knew I would never forget that day. No matter how much someone tries to make me forget you, my heart will always choose you.
+
+I remember you practicing, watching you play, and cheering for you every day. On 16th November, I was so proud seeing you lead your team and reach the finals. Even though you didn’t win, the way you played, the way you tried—it made me want to hug you so tight. Seeing your crossed fingers, your prayers, and your hope made everything feel possible. You did so well, and I felt incredibly blessed to have you in my life.
+
+Being with you feels like home. The time we spend together is the best part of my life—when I’m with you, all my problems disappear. I love you so much, my bbg. I promise to love you in a way that you’ll never doubt my love. I’ll keep you forever, protect you forever, and make you the happiest—because you are my home, my peace, and my everything.`;
+
+let k=0;
+function startPage3Typing(){
+    const page3Text=document.getElementById("page3Text");
+    page3Text.innerHTML="";
+    k=0;
+    imgIndex = 0
+
+    const paragraphs = page3Message.split("\n\n");
+    const totalParagraphs = paragraphs.length;
+    let currentParagraph = 0;
+
+    function typeLetter3(){
+        if(k<page3Message.length){
+           // Detect paragraph break
+            if(page3Message[k] === "\n" && page3Message[k+1] === "\n"){
+                page3Text.innerHTML += "<br><br>";
+
+                // Insert image if available
+                if(memoryImages[imgIndex]){
+                    page3Text.innerHTML += `
+                        <img src="${memoryImages[imgIndex]}" class="memory-img">
+                    `;
+                    imgIndex++;
+                }
+                currentParagraph++;
+                k += 2;
+
+            if (currentParagraph === totalParagraphs) {
+                page3Text.innerHTML += `
+                    <video class="memory-video" controls muted playsinline>
+                    <source src="${videoSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                    </video>
+                `;
+                }
+            } else {
+                page3Text.innerHTML += page3Message[k];
+                k++;
+            }
+
+            setTimeout(typeLetter3, 25);
+        }
+    }
+
+    typeLetter3();
+}
+
+</script>
+
+</body>
+</html>
